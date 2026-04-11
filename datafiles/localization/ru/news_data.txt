@@ -1,0 +1,3 @@
+[data]
+earlyAccess_name=ИГРА В РАЗРАБОТКЕ
+earlyAccess_message=

@@ -1,0 +1,16 @@
+[data]
+b_lng_ru=Русский
+b_lng_eng=English
+b_lng_ptbr=Portuguese
+b_lng_deu=German
+b_lng_fra=French
+b_lng_ita=Italian
+b_lng_chs=Chinese (Simplified)
+
+tip_0=Выберите язык
+tip_1=Choose a language
+tip_2=Escolha um idioma
+tip_3=Wählen Sie eine Sprache
+tip_4=Choisissez une langue
+tip_5= Scegli una lingua
+tip_6=Choose a language

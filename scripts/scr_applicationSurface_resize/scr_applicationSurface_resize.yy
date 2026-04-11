@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_applicationSurface_resize",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_applicationSurface_resize",
+  "parent":{
+    "name":"WindowMode",
+    "path":"folders/MAIN/Scripts/WindowMode.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

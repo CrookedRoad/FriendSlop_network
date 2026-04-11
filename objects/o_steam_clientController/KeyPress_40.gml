@@ -1,0 +1,1 @@
+scr_steam_clientRequest(global.mp_lobby_host_id, "ping");

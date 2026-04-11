@@ -1,0 +1,1 @@
+if timer > 0 then timer -- else instance_destroy();

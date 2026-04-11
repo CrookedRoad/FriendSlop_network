@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_codeName_generator",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_codeName_generator",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/MAIN/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

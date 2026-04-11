@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_network_update",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_network_update",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/SYSTEMS/STEAMWORKS/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

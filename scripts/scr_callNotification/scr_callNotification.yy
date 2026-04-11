@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_callNotification",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_callNotification",
+  "parent":{
+    "name":"Call",
+    "path":"folders/MAIN/Scripts/Call.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

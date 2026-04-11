@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_callConfirmWindow",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_callConfirmWindow",
+  "parent":{
+    "name":"Call",
+    "path":"folders/MAIN/Scripts/Call.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

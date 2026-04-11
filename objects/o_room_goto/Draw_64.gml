@@ -1,0 +1,1 @@
+draw_sprite_ext(s_custom_rectangle, 0, 0, 0, global.gui_width, global.gui_height, 0, color, alpha);

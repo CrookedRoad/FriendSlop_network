@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_IAV_guard_init",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_IAV_guard_init",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/MAIN/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

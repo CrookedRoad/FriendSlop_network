@@ -1,0 +1,1 @@
+screenshotcooldown = false;

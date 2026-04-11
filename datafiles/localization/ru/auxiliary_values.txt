@@ -1,0 +1,40 @@
+[data]
+<BUTTONS>=""
+b_openURL=ОТКРЫТЬ ССЫЛКУ
+ok=ОК
+yes=ДА
+no=НЕТ
+switch_ON=Вкл.
+switch_OFF=Выкл.
+b_continue=ПРОДОЛЖИТЬ
+b_save=СОХРАНИТЬ
+b_menuExit=ВЫЙТИ В МЕНЮ
+b_exit=ВЫЙТИ
+b_newGame=НАЧАТЬ ИГРУ
+b_settings=НАСТРОЙКИ
+b_add=ДОПОЛНИТЕЛЬНО
+b_creators=СОЗДАТЕЛИ
+b_lang=ЯЗЫК ИГРЫ
+b_dismode=РЕЖИМ ОТОБРАЖЕНИЯ
+b_dismode_1=Оконный
+b_dismode_2=Полноэкранный
+b_dismode_3=Полноэкранный в окне
+b_vsync=ВЕРТ. СИНХРОНИЗАЦИЯ
+b_snd=ЗВУК
+b_snd_1=Общая громкость
+b_snd_2=Громкость окружения
+b_snd_3=Громкость интерфейса
+b_snd_4=Громкость музыки
+b_back=НАЗАД
+b_optimalSound=ОПТИМАЛЬНЫЙ ЗВУК
+
+<BUTTONS DESC>=""
+bdesc_optimalSound = Установит параметры звука на оптимальные соотношения.
+
+<SOCIAL>=""
+b_social_telegram=Телеграм-канал
+b_social_discord=Сервер дискорд
+b_social_vkontakte=Сообщество ВК
+b_social_boosty=Поддержать разработчика
+
+<OTHER>=""

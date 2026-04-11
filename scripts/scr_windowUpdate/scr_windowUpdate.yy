@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_windowUpdate",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_windowUpdate",
+  "parent":{
+    "name":"WindowMode",
+    "path":"folders/MAIN/Scripts/WindowMode.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

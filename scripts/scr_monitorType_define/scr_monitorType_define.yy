@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_monitorType_define",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_monitorType_define",
+  "parent":{
+    "name":"WindowMode",
+    "path":"folders/MAIN/Scripts/WindowMode.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

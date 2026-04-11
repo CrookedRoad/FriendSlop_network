@@ -1,0 +1,1 @@
+cursorText_string = "";

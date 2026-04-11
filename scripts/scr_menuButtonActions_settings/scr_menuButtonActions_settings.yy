@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_menuButtonActions_settings",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_menuButtonActions_settings",
+  "parent":{
+    "name":"ButtonAction",
+    "path":"folders/MENU/Scripts/ButtonAction.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

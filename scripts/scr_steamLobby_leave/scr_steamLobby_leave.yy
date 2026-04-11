@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_steamLobby_leave",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_steamLobby_leave",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/SYSTEMS/STEAMWORKS/Multiplayer/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
