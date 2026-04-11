@@ -12,4 +12,4 @@ var _buff = buffer_create(1, buffer_grow, 1);
 }
 }
 
-//Жопа
+//ПОРНО ТУТ БЕСПЛАТНО
