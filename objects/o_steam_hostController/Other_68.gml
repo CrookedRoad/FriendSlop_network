@@ -34,6 +34,9 @@ var _packet_type = buffer_read(_buff, buffer_string);
 	        steam_net_packet_send(int64(sender_id), res_buf, buffer_get_size(res_buf), 2);
 	        buffer_delete(res_buf);
 		break;
+		case "test":
+			show_debug_message("Request received: test");
+		break;
 	}
 	
 buffer_delete(_buff);
