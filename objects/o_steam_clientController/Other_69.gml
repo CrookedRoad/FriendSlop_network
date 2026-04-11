@@ -6,7 +6,7 @@ var change_flags = async_load[? "change_flags"];
 
 	if (change_flags == steam_lobby_member_change_entered){ //Игрок вошел в лобби
 		if instance_exists(o_players_spawnPoint){
-		var inst = instance_create_depth(o_players_spawnPoint.x, o_players_spawnPoint.y, 0, o_player_other);
+		var inst = instance_create_depth(o_players_spawnPoint.x, o_players_spawnPoint.y, 0, o_player_remote);
 		    inst.ownerSteam_id = user_id;
 		}
 		
@@ -21,8 +21,8 @@ var change_flags = async_load[? "change_flags"];
 			show_debug_message("Connection with the host was lost.");
 			scr_roomGoto(mainScreen_rm, -1, -1, -1);
 		} else{ //Если отключился обычный игрок
-			if instance_exists(o_player_other){
-				with(o_player_other){
+			if instance_exists(o_player_remote){
+				with(o_player_remote){
 					if (ownerSteam_id == user_id) then instance_destroy();
 				}
 			}

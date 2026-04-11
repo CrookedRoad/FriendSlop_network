@@ -3,7 +3,7 @@ if viewShake > 0{viewSh_x = irandom_range(-viewShake, viewShake); viewSh_y = ira
 switch(global.viewMoveBlock){
     case false:
 	if instance_exists(viewFollowTarget){
-		if viewFollowTarget == o_player{
+		if viewFollowTarget == o_player_local{
 			viewXpos = viewFollowTarget.posX;
 			viewYpos = viewFollowTarget.posY-viewYoffset;
 		} else{

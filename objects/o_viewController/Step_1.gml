@@ -1,5 +1,5 @@
 if instance_exists(viewFollowTarget){
-	if viewFollowTarget != o_player{
+	if viewFollowTarget != o_player_local{
 		global.playerCantMove = true;
 		global.mapInteract = false;
 	}

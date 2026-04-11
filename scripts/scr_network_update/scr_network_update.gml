@@ -7,5 +7,6 @@ global.steamAPI = false;
 if steam_initialised(){
     global.steamAPI = true;
 	global.userName = steam_get_persona_name();
+	global.steamID = steam_get_user_steam_id();
 }
 }

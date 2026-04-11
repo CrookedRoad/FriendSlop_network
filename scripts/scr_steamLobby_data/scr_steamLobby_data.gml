@@ -3,6 +3,19 @@ function scr_steamLobby_data(argument0){
 switch(argument0)
 {
 	case "init":
+	enum packetType_host {
+		ping,
+		pong,
+		getPlayers,
+		playerSync
+	}
+	enum packetType_client {
+		ping,
+		pong,
+		playerInit,
+		playerSync
+	}
+	
 	global.mp_lobby_playersList = ds_list_create();
 	global.mp_lobby_list = ds_list_create();
 	global.mp_steam_netBuffer = buffer_create(1024, buffer_grow, 1);
@@ -17,6 +30,7 @@ switch(argument0)
 	global.mp_lobby_userPermissions = "";
 	global.mp_lobby_room = lobby_rm;
 	global.mp_lobby_key = "";
+	global.mp_tickrate = 2;
 	
 	if ds_exists(global.mp_lobby_list, ds_type_list){
 		ds_list_clear(global.mp_lobby_list);

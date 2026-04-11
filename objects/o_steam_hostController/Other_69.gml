@@ -12,19 +12,19 @@ var change_flags = async_load[? "change_flags"];
 
 	if (change_flags == steam_lobby_member_change_entered){ //Игрок вошел в лобби
 		if instance_exists(o_players_spawnPoint){
-		var inst = instance_create_depth(o_players_spawnPoint.x, o_players_spawnPoint.y, 0, o_player_other);
+		var inst = instance_create_depth(o_players_spawnPoint.x, o_players_spawnPoint.y, 0, o_player_remote);
 		    inst.ownerSteam_id = user_id;
 		}
 		
-		scr_steam_hostRequest(user_id, "ping");
+		scr_steam_hostRequest(user_id, packetType_client.ping);
 	    show_debug_message("Player is connected: " + string(user_id));
 		if ds_exists(global.mp_lobby_playersList, ds_type_list){ //Добавляем игрока в список
 			ds_list_add(global.mp_lobby_playersList, user_id);
 		}
 	}
 	if (change_flags == steam_lobby_member_change_left || change_flags == steam_lobby_member_change_disconnected){ //Игрок отключился
-		if instance_exists(o_player_other){
-			with(o_player_other){
+		if instance_exists(o_player_remote){
+			with(o_player_remote){
 				if (ownerSteam_id == user_id) then instance_destroy();
 			}
 		}

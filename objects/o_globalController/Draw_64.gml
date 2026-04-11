@@ -10,6 +10,7 @@ switch(showGameInfo)
 		TEXT += "appID: "+string(global.appID)+" ("+string(global.buildType)+")\n";
 		TEXT += "steamAPI: "+string(global.steamAPI)+"\n";
 		TEXT += "steamUsername: "+string(global.userName)+"\n";
+		TEXT += "steamID: "+string(global.steamID)+"\n";
 		if global.mp_lobby_id != 0{
 			TEXT += "lobbyID: "+string(global.mp_lobby_id)+"\n";
 			TEXT += "lobbyHostID: "+string(global.mp_lobby_host_id)+"\n";

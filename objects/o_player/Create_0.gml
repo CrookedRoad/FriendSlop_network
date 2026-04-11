@@ -15,7 +15,7 @@ phy_fixed_rotation = false;
 #endregion
 depth = 1;
 
-ownerSteam_id = steam_get_user_steam_id();
+ownerSteam_id = global.steamID;
 maxhp = 3;
 HP = maxhp;
 spawnX = x;
@@ -50,11 +50,3 @@ bodyAngle = 0;
 bodySpring = 0;
 bodySpring_draw = 0;
 breath = 0;
-
-if instance_exists(o_viewController){
-if object_index == o_player{
-	o_viewController.viewFollowTarget = id;
-}
-} else{
-	instance_create_depth(0, 0, 0, o_viewController);
-}

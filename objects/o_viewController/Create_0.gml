@@ -1,6 +1,6 @@
 depth = -5000;
 
-viewFollowTarget = o_player;
+viewFollowTarget = o_player_local;
 
 viewBoard = false;
 viewBoardAlpha = 0;
@@ -16,9 +16,9 @@ viewSh_x = 0;
 viewSh_y = 0;
 viewYoffset = 0;
 
-if instance_exists(o_player){
-	viewXpos = o_player.x;
-	viewYpos = o_player.y-viewYoffset;
+if instance_exists(o_player_local){
+	viewXpos = o_player_local.x;
+	viewYpos = o_player_local.y-viewYoffset;
 }
 
 var viewBorder_w, viewBorder_h;
