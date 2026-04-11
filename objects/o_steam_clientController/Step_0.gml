@@ -29,8 +29,8 @@ var _packet_type = buffer_read(_buff, buffer_u8);
 					ds_list_add(global.mp_lobby_playersList, user_id);
 				}
 				if user_id != global.steamID{
-				var _x = buffer_read(_buff, buffer_f32);
-				var _y = buffer_read(_buff, buffer_f32);
+				var _x = buffer_read(_buff, buffer_s16);
+				var _y = buffer_read(_buff, buffer_s16);
 				var inst = instance_create_depth(_x, _y, 0, o_player_remote);
 					inst.ownerSteam_id = user_id;
 				}

@@ -29,9 +29,9 @@ var _packet_type = buffer_read(_buff, buffer_u8);
 			buffer_write(steam_sendBuffer, buffer_u8, instance_number(o_player));
 			if instance_exists(o_player){
 				with(o_player){
-					buffer_write(steam_sendBuffer, buffer_u64, ownerSteam_id);
-					buffer_write(steam_sendBuffer, buffer_f32, x);
-					buffer_write(steam_sendBuffer, buffer_f32, y);
+					buffer_write(other.steam_sendBuffer, buffer_u64, ownerSteam_id);
+					buffer_write(other.steam_sendBuffer, buffer_s16, x);
+					buffer_write(other.steam_sendBuffer, buffer_s16, y);
 				}
 			}
 			steam_net_packet_send(int64(sender_id), steam_sendBuffer, buffer_tell(steam_sendBuffer), steam_net_packet_type_reliable);
