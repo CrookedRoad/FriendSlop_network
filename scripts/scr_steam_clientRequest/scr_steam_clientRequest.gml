@@ -11,3 +11,5 @@ var _buff = buffer_create(1, buffer_grow, 1);
 	show_debug_message("Send request to host: "+string(_request));
 }
 }
+
+//Жопа
