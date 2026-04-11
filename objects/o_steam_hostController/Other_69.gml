@@ -1,5 +1,11 @@
 var type = async_load[? "event_type"];
 
+if (type == "p2p_session_request"){
+var remote_id = ds_map_find_value(async_load, "remote_steam_id");
+    steam_net_accept_p2p_session(remote_id);
+    show_debug_message("Session with " + string(remote_id) + " accepted manually!");
+}
+
 if (type == "lobby_chat_update"){
 var user_id = async_load[? "user_id"];
 var change_flags = async_load[? "change_flags"];

@@ -17,7 +17,7 @@ var change_flags = async_load[? "change_flags"];
 	}
 	if (change_flags == steam_lobby_member_change_left || change_flags == steam_lobby_member_change_disconnected){ //Игрок отключился		
 		show_debug_message("Player is leaved: " + string(user_id));
-		if (user_id == steam_lobby_get_owner_id()) { //Если отключился хост лобби
+		if (user_id == global.mp_lobby_host_id) { //Если отключился хост лобби
 			show_debug_message("Connection with the host was lost.");
 			scr_roomGoto(mainScreen_rm, -1, -1, -1);
 		} else{ //Если отключился обычный игрок
