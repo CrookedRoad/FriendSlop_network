@@ -17,24 +17,23 @@ var change_flags = async_load[? "change_flags"];
 	}
 	if (change_flags == steam_lobby_member_change_left || change_flags == steam_lobby_member_change_disconnected){ //Игрок отключился		
 		show_debug_message("Player is leaved: " + string(user_id));
+		if instance_exists(o_player_remote){
+			with(o_player_remote){
+				if (ownerSteam_id == user_id) then scr_char_crumbling();
+			}
+		}
+		if ds_exists(global.mp_lobby_playersList, ds_type_list){ //Удаляем игрока из списка
+		var listSize = ds_list_size(global.mp_lobby_playersList);
+			for(var i=0; i<listSize; i++)
+			{
+				if (global.mp_lobby_playersList[| i] == user_id){
+					ds_list_delete(global.mp_lobby_playersList, i);
+				}
+			}
+		}
 		if (user_id == global.mp_lobby_host_id) { //Если отключился хост лобби
 			show_debug_message("Connection with the host was lost.");
 			scr_roomGoto(mainScreen_rm, -1, -1, -1);
-		} else{ //Если отключился обычный игрок
-			if instance_exists(o_player_remote){
-				with(o_player_remote){
-					if (ownerSteam_id == user_id) then instance_destroy();
-				}
-			}
-			if ds_exists(global.mp_lobby_playersList, ds_type_list){ //Удаляем игрока из списка
-			var listSize = ds_list_size(global.mp_lobby_playersList);
-				for(var i=0; i<listSize; i++)
-				{
-					if (global.mp_lobby_playersList[| i] == user_id){
-						ds_list_delete(global.mp_lobby_playersList, i);
-					}
-				}
-			}
 		}
 	}
 }

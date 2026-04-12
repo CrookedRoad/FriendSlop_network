@@ -25,7 +25,7 @@ var change_flags = async_load[? "change_flags"];
 	if (change_flags == steam_lobby_member_change_left || change_flags == steam_lobby_member_change_disconnected){ //Игрок отключился
 		if instance_exists(o_player_remote){
 			with(o_player_remote){
-				if (ownerSteam_id == user_id) then instance_destroy();
+				if (ownerSteam_id == user_id) then scr_char_crumbling();
 			}
 		}
 		

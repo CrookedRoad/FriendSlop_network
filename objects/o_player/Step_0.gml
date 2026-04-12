@@ -22,8 +22,10 @@ var _on_ground = place_meeting(x, y+20, o_wall) || place_meeting(x, y+20, o_phys
 	
 		if (_on_ground){
 			current_max_speed = _target_move_speed;
-			if place_meeting(x+(15*image_xscale), y, o_physics_parent){
-				pushing = true;
+			if image_xscale == _move_dir{
+				if place_meeting(x+(10*image_xscale), y, o_physics_parent){
+					pushing = true;
+				}
 			}
 		} else{
 			if place_meeting(x+(10*image_xscale), y+15, o_wall){
@@ -44,7 +46,7 @@ var _on_ground = place_meeting(x, y+20, o_wall) || place_meeting(x, y+20, o_phys
 	}
 
 	if (_key_jump && abs(phy_speed_y) < 0.3){
-		if !place_meeting(x, y-20, o_wall) && !place_meeting(x+(10*image_xscale), y-25, o_wall){
+		if !place_meeting(x, y-20, o_wall){
 			physics_apply_impulse(x, y, 0, jump_force);
 		}
 	}

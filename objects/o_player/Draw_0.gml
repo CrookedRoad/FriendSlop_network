@@ -42,12 +42,14 @@ var offset = sin(time) * 2;
 }
 var bodyPosX, bodyPosY;
 	bodyPosX = posX;
-	bodyPosY = posY-bodyOffset+bodySpring_draw;
+	bodyPosY = posY-bodyOffset;
+	bodyPosX += lengthdir_x(bodySpring_draw, 270+image_angle);
+	bodyPosY += lengthdir_y(bodySpring_draw, 270+image_angle);
 
 var armBreath = (breath*5)*image_xscale;
 var armPosAngle = (image_angle+(20*image_xscale));
 var armPosX, armPosY;
-	armPosX = posX + (lengthdir_x(7, armPosAngle)*image_xscale);
+	armPosX = bodyPosX + (lengthdir_x(7, armPosAngle)*image_xscale);
 	armPosY = (bodyPosY+breath) + (lengthdir_y(7, armPosAngle)*image_xscale);
 draw_sprite_ext(armSprite, 1, armPosX, armPosY, image_xscale, image_yscale, image_angle+armAngle+armDirection+armBreath, image_blend, image_alpha);
 
@@ -58,6 +60,6 @@ draw_sprite_ext(headSprite, 0, bodyPosX, bodyPosY-breath, image_xscale, image_ys
 
 var armPosAngle = (image_angle+(160*image_xscale));
 var armPosX, armPosY;
-	armPosX = posX + (lengthdir_x(7, armPosAngle)*image_xscale);
+	armPosX = bodyPosX + (lengthdir_x(7, armPosAngle)*image_xscale);
 	armPosY = (bodyPosY+breath) + (lengthdir_y(7, armPosAngle)*image_xscale);
 draw_sprite_ext(armSprite, 0, armPosX, armPosY, image_xscale, image_yscale, image_angle-armAngle+armDirection-armBreath, image_blend, image_alpha);

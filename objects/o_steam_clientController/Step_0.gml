@@ -54,8 +54,8 @@ var _packet_type = buffer_read(_buff, buffer_u8);
 			pPushing  = (flags & FLAG_PUSHING) != 0;
 			with(o_player_remote){
 				if ownerSteam_id == sender_id{
-					phy_position_x = pX;
-					phy_position_y = pY;
+					posX_target = pX;
+					posY_target = pY;
 					speed_hor = pSh;
 					speed_ver = pSv;
 					rotation_target = pR;
