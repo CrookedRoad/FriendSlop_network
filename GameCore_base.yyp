@@ -201,6 +201,7 @@
     {"id":{"name":"scr_steam_hostRequest","path":"scripts/scr_steam_hostRequest/scr_steam_hostRequest.yy",},},
     {"id":{"name":"scr_steam_init","path":"scripts/scr_steam_init/scr_steam_init.yy",},},
     {"id":{"name":"scr_steam_network_process_packet","path":"scripts/scr_steam_network_process_packet/scr_steam_network_process_packet.yy",},},
+    {"id":{"name":"scr_steam_request_all","path":"scripts/scr_steam_request_all/scr_steam_request_all.yy",},},
     {"id":{"name":"scr_steamConnection_check","path":"scripts/scr_steamConnection_check/scr_steamConnection_check.yy",},},
     {"id":{"name":"scr_steamLobby_data","path":"scripts/scr_steamLobby_data/scr_steamLobby_data.yy",},},
     {"id":{"name":"scr_steamLobby_leave","path":"scripts/scr_steamLobby_leave/scr_steamLobby_leave.yy",},},

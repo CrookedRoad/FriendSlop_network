@@ -1,6 +1,8 @@
-/// @description Отправка локальных данных хосту
+/// @description Отправка локальных данных клиентам
 if sendData_timer > 0 then sendData_timer -- else{
-var host_id = global.mp_lobby_host_id;
+if ds_exists(global.mp_lobby_playersList, ds_type_list){
+var playerListSize = ds_list_size(global.mp_lobby_playersList);
+if playerListSize > 1{
 if instance_exists(o_player_local){ //Данные персонажа
 var pX, pY, pSh, pSv, pR, pXs, pMoving, pRunning, pClimbing, pPushing;
 	with(o_player_local){
@@ -15,7 +17,7 @@ var pX, pY, pSh, pSv, pR, pXs, pMoving, pRunning, pClimbing, pPushing;
 		pClimbing = climbing;
 		pPushing = pushing;
 	}
-	
+		
 	buffer_seek(steam_sendBuffer, buffer_seek_start, 0);
 	buffer_write(steam_sendBuffer, buffer_u8, packetType.playerSync);
 	buffer_write(steam_sendBuffer, buffer_s16, pX);
@@ -30,9 +32,18 @@ var pX, pY, pSh, pSv, pR, pXs, pMoving, pRunning, pClimbing, pPushing;
 		if (pClimbing) flags |= FLAG_CLIMBING;
 		if (pPushing)  flags |= FLAG_PUSHING;
 	buffer_write(steam_sendBuffer, buffer_u8, flags);
-	steam_net_packet_send(int64(host_id), steam_sendBuffer, buffer_tell(steam_sendBuffer), steam_net_packet_type_unreliable);
+	var packetSize = buffer_tell(steam_sendBuffer);
+	for(var i=0; i<playerListSize; i++)
+	{
+	var user_id = global.mp_lobby_playersList[| i];
+		if user_id != global.steamID{
+			steam_net_packet_send(int64(user_id), steam_sendBuffer, packetSize, steam_net_packet_type_unreliable);
+		}
+	}
 }
 	
-
+	
+}
+}
 sendData_timer = tickrate;
 }

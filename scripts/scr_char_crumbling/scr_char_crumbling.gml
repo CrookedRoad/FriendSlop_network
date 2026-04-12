@@ -32,6 +32,5 @@ var emitter = scr_create_partEmitter(x, y, depth-3, 120);
 		}
 		}
 	}
-	}	
-instance_destroy();
+	}
 }

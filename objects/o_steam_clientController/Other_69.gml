@@ -19,7 +19,10 @@ var change_flags = async_load[? "change_flags"];
 		show_debug_message("Player is leaved: " + string(user_id));
 		if instance_exists(o_player_remote){
 			with(o_player_remote){
-				if (ownerSteam_id == user_id) then scr_char_crumbling();
+				if (ownerSteam_id == user_id){
+					scr_char_crumbling();
+					instance_destroy();
+				}
 			}
 		}
 		if ds_exists(global.mp_lobby_playersList, ds_type_list){ //Удаляем игрока из списка

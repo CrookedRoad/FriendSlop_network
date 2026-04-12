@@ -5,7 +5,8 @@ enum packetType {
 	pong,
 	getPlayers,
 	playersInit,
-	playerSync
+	playerSync,
+	playerDeath
 }
 
 #macro FLAG_MOVING   1 //(1 << 0)

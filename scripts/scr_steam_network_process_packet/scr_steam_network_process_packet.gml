@@ -21,16 +21,19 @@ var _packet_type = buffer_read(_buff, buffer_u8);
 		case packetType.getPlayers: //Отправка данных о всех игроках (host only)
 			buffer_seek(steam_sendBuffer, buffer_seek_start, 0);
 			buffer_write(steam_sendBuffer, buffer_u8, packetType.playersInit);
-			
-			buffer_write(steam_sendBuffer, buffer_u8, instance_number(o_player));
-			if instance_exists(o_player){
+			var count = 0;
 				with(o_player){
+					if ownerSteam_id != 0 then count ++;
+				}
+				buffer_write(steam_sendBuffer, buffer_u8, count);
+				with(o_player){
+					if ownerSteam_id != 0{
 					buffer_write(other.steam_sendBuffer, buffer_u64, ownerSteam_id);
 					buffer_write(other.steam_sendBuffer, buffer_s16, x);
 					buffer_write(other.steam_sendBuffer, buffer_s16, y);
 					buffer_write(other.steam_sendBuffer, buffer_s8, image_xscale);
+					}
 				}
-			}
 			steam_net_packet_send(int64(sender_id), steam_sendBuffer, buffer_tell(steam_sendBuffer), steam_net_packet_type_reliable);
 		break;
 		case packetType.playersInit: //Инициализация всех игроков (client only)
@@ -78,6 +81,13 @@ var _packet_type = buffer_read(_buff, buffer_u8);
 					
 					phy_speed_x = 0;
 					phy_speed_y = 0;
+				}
+			}
+		break;
+		case packetType.playerDeath: //Смерть персонажа
+			with(o_player){
+				if ownerSteam_id == sender_id{
+					scr_char_crumbling();
 				}
 			}
 		break;
