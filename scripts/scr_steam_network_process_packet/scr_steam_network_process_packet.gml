@@ -87,6 +87,7 @@ var _packet_type = buffer_read(_buff, buffer_u8);
 		case packetType.playerDeath: //Смерть персонажа
 			with(o_player_remote){
 				if ownerSteam_id == sender_id{
+					HP = 0;
 					event_user(0);
 				}
 			}
