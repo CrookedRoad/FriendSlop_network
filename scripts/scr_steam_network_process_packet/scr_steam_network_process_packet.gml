@@ -87,11 +87,7 @@ var _packet_type = buffer_read(_buff, buffer_u8);
 		case packetType.playerDeath: //Смерть персонажа
 			with(o_player_remote){
 				if ownerSteam_id == sender_id{
-					scr_char_crumbling();
-					posX_target = spawnX;
-					posY_target = spawnY;
-					phy_position_x = posX_target;
-					phy_position_y = posY_target;
+					event_user(0);
 				}
 			}
 		break;
