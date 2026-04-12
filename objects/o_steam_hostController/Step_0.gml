@@ -7,8 +7,8 @@ var _buff = buffer_create(_size, buffer_fixed, 1);
 	steam_net_packet_get_data(_buff);
 	buffer_seek(_buff, buffer_seek_start, 0);
 var _packet_type = buffer_read(_buff, buffer_u8);
-	show_debug_message("Request received: "+string(_packet_type));
 	_max_packets --;
+	//show_debug_message("Request received: "+string(_packet_type));
 	
 	switch(_packet_type)
 	{
@@ -40,7 +40,7 @@ var _packet_type = buffer_read(_buff, buffer_u8);
 		var pX = buffer_read(_buff, buffer_s16);
 		var pY = buffer_read(_buff, buffer_s16);
 			with(o_player_remote){
-				if ownerSteam_id == sender_id{
+				if int64(ownerSteam_id) == int64(sender_id){
 					x = pX;
 					y = pY;
 				}
