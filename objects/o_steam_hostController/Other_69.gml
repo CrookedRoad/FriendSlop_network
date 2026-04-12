@@ -16,7 +16,7 @@ var change_flags = async_load[? "change_flags"];
 		    inst.ownerSteam_id = user_id;
 		}
 		
-		scr_steam_hostRequest(user_id, packetType_client.ping);
+		scr_steam_hostRequest(user_id, packetType.ping);
 	    show_debug_message("Player is connected: " + string(user_id));
 		if ds_exists(global.mp_lobby_playersList, ds_type_list){ //Добавляем игрока в список
 			ds_list_add(global.mp_lobby_playersList, user_id);

@@ -1,15 +1,10 @@
 ///@function 
 function scr_enum_init(){
-enum packetType_host {
+enum packetType {
 	ping,
 	pong,
 	getPlayers,
-	playerSync
-}
-enum packetType_client {
-	ping,
-	pong,
-	playerInit,
+	playersInit,
 	playerSync
 }
 

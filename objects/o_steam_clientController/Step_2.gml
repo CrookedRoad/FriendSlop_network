@@ -17,7 +17,7 @@ var pX, pY, pSh, pSv, pR, pXs, pMoving, pRunning, pClimbing, pPushing;
 	}
 	
 	buffer_seek(steam_sendBuffer, buffer_seek_start, 0);
-	buffer_write(steam_sendBuffer, buffer_u8, packetType_host.playerSync);
+	buffer_write(steam_sendBuffer, buffer_u8, packetType.playerSync);
 	buffer_write(steam_sendBuffer, buffer_s16, pX);
 	buffer_write(steam_sendBuffer, buffer_s16, pY);
 	buffer_write(steam_sendBuffer, buffer_s16, pSh);

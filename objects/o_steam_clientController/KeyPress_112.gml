@@ -1,1 +1,1 @@
-scr_steam_clientRequest(global.mp_lobby_host_id, packetType_host.ping);
+scr_steam_clientRequest(global.mp_lobby_host_id, packetType.ping);
