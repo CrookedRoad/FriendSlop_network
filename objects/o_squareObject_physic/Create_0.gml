@@ -1,3 +1,4 @@
+event_inherited();
 phy_shape_w = 15;
 phy_shape_h = 15;
 phy_density = 5;

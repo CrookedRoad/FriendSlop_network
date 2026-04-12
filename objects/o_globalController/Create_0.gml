@@ -14,8 +14,8 @@ showHitbox = false;
 globalvar skipIntro;
 skipIntro = true;
 globalvar test_mode;
-test_mode = false;
-global.testRoom = lobby_rm;
+test_mode = true;
+global.testRoom = test_rm;
 
 globalvar version;
 version = "0.0.1";
@@ -68,6 +68,7 @@ global.cameraWidth = 0;
 global.cameraHeight = 0;
 global.cameraZoom = false;
 
+global.cursor_on_object = false;
 global.mouseX = 0;
 global.mouseY = 0;
 

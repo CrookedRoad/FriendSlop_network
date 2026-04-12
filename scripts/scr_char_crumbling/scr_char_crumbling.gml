@@ -1,9 +1,11 @@
-function scr_char_crumbling(){ 
+function scr_char_crumbling(){
+if headSprite != 0{
 var shard = instance_create_depth(x, y, depth, o_skull);
 	with(shard){
 		phy_rotation = other.phy_rotation;
 		physics_apply_impulse(x, y, choose(-10, 10), -irandom_range(30, 50));
 	}
+}
 var shard = instance_create_depth(x, y, depth, o_ribs);
 	with(shard){
 		phy_rotation = other.phy_rotation;

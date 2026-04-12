@@ -1,3 +1,4 @@
+event_inherited();
 phy_shape_rad = 15;
 phy_density = 5;
 phy_friction = 0.5;

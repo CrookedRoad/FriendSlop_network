@@ -5,3 +5,5 @@ phy_density = 10;
 phy_friction = 0.5;
 phy_restitution = 0.1;
 phy_collision_group = 1;
+
+lerpSpeed = 0.025;

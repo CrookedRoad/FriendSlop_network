@@ -8,7 +8,8 @@ physics_fixture_set_linear_damping(fix, 0.5);
 physics_fixture_set_angular_damping(fix, 0.1);
 physics_fixture_set_collision_group(fix, phy_collision_group);
 
-physics_fixture_bind(fix, id);
+fixture = physics_fixture_bind(fix, id);
+densityDefault = physics_get_density(fixture);
 
 physics_fixture_delete(fix);
 phy_fixed_rotation = false;

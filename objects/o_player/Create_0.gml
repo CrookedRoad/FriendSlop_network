@@ -20,7 +20,8 @@ walk_speed = 1;
 run_speed = 2;
 current_max_speed = walk_speed;
 jump_force = -130;
-walljump_force = 150;
+walljump_force = 50;
+moveLock = 0;
 
 lerpSpeed = 0.5;
 posX = x;

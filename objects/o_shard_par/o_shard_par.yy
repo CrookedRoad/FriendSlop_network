@@ -12,7 +12,10 @@
     "name":"Shards",
     "path":"folders/Physics/Objects/Player/Shards.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"o_physics_parent",
+    "path":"objects/o_physics_parent/o_physics_parent.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

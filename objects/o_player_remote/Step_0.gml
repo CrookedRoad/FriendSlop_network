@@ -16,6 +16,3 @@ if speed_ver > 3{
 	bodySpring = 10;
 	armAngle = lerp(armAngle, 90*image_xscale, 0.4);
 }
-if speed_ver > 5{
-	bodySpring = 0;
-}

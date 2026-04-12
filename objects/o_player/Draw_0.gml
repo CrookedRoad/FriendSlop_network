@@ -1,5 +1,5 @@
-posX = lerp(posX, x, lerpSpeed);
-posY = lerp(posY, y, lerpSpeed);
+posX = lerp(posX, x, 0.65);
+posY = lerp(posY, y, 0.65);
 if bodySpring > 0 then bodySpring -= 0.5;
 bodySpring_draw = lerp(bodySpring_draw, bodySpring, 0.2);
 
@@ -55,7 +55,9 @@ draw_sprite_ext(armSprite, 1, armPosX, armPosY, image_xscale, image_yscale, imag
 
 
 draw_sprite_ext(bodySprite, 0, bodyPosX, bodyPosY+breath, image_xscale, image_yscale, image_angle-bodyAngle, image_blend, image_alpha);
-draw_sprite_ext(headSprite, 0, bodyPosX, bodyPosY-breath, image_xscale, image_yscale, image_angle-bodyAngle, image_blend, image_alpha);
+if headSprite != 0{
+	draw_sprite_ext(headSprite, 0, bodyPosX, bodyPosY-breath, image_xscale, image_yscale, image_angle-bodyAngle, image_blend, image_alpha);
+}
 
 
 var armPosAngle = (image_angle+(160*image_xscale));

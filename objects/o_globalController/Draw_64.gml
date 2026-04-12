@@ -5,6 +5,11 @@ switch(showGameInfo)
         TEXT += "FPS:  "+string(round(fps_real))+"/"+string(fps)+"\n";
         TEXT += "displayResolution:   ("+string(global.display_width)+"*"+string(global.display_height)+")   currentResolution:   ("+string(global.window_width)+"*"+string(global.window_height)+")"+"\n";
         TEXT += "instanceNumber:   "+string(instance_number(all))+"\n";
+		if global.cursor_on_object != 0 && instance_exists(global.cursor_on_object){
+			TEXT += "cursor_on_object:   "+string(object_get_name(global.cursor_on_object.object_index))+"\n";
+		} else{
+			TEXT += "cursor_on_object:   noone\n";
+		}
 		
 		TEXT += "NetworkConnection: "+string(global.networkConnection)+"\n";
 		TEXT += "appID: "+string(global.appID)+" ("+string(global.buildType)+")\n";

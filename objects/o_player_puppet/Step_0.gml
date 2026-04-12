@@ -33,7 +33,6 @@ if phy_speed_y > 3{
 	phy_rotation += sin(degtorad(0 - phy_rotation))*20;
 }
 if phy_speed_y > 5{
-	bodySpring = 0;
 	phy_rotation += 2*image_xscale;
 }
 if phy_speed_y > 8{

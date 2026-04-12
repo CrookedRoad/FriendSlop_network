@@ -9,8 +9,8 @@
   "name":"o_player_puppet_test",
   "overriddenProperties":[],
   "parent":{
-    "name":"Player",
-    "path":"folders/Physics/Objects/Player.yy",
+    "name":"МУСОРКА",
+    "path":"folders/МУСОРКА.yy",
   },
   "parentObjectId":{
     "name":"o_player",
