@@ -37,13 +37,14 @@ var _packet_type = buffer_read(_buff, buffer_u8);
 			steam_net_packet_send(int64(sender_id), steam_sendBuffer, buffer_tell(steam_sendBuffer), steam_net_packet_type_reliable);
 		break;
 		case packetType_host.playerSync: //Синхронизация персонажей
+		var pID = buffer_read(_buff, buffer_u64);
 		var pX = buffer_read(_buff, buffer_s16);
 		var pY = buffer_read(_buff, buffer_s16);
 			with(o_player_remote){
-				//if ownerSteam_id == sender_id{
+				if ownerSteam_id == pID{
 					x = pX;
 					y = pY;
-				//}
+				}
 			}
 		break;
 	}

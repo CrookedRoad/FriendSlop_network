@@ -38,13 +38,14 @@ var _packet_type = buffer_read(_buff, buffer_u8);
 			}
 		break;
 		case packetType_client.playerSync: //Синхронизация персонажей
+		var pID = buffer_read(_buff, buffer_u64);
 		var pX = buffer_read(_buff, buffer_s16);
 		var pY = buffer_read(_buff, buffer_s16);
 			with(o_player_remote){
-				//if ownerSteam_id == sender_id{
+				if ownerSteam_id == pID{
 					x = pX;
 					y = pY;
-				//}
+				}
 			}
 		break;
 	}
