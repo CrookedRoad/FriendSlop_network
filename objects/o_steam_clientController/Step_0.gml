@@ -41,10 +41,10 @@ var _packet_type = buffer_read(_buff, buffer_u8);
 		var pX = buffer_read(_buff, buffer_s16);
 		var pY = buffer_read(_buff, buffer_s16);
 			with(o_player_remote){
-				if int64(ownerSteam_id) == int64(sender_id){
+				//if ownerSteam_id == sender_id{
 					x = pX;
 					y = pY;
-				}
+				//}
 			}
 		break;
 	}
