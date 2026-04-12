@@ -1,4 +1,3 @@
 event_inherited();
+phy_rotation = lerp(phy_rotation, rotation_target, lerpSpeed);
 armDirection = 0;
-var diff = angle_difference(-phy_rotation, -rotation_target);
-phy_rotation -= diff*lerpSpeed;
