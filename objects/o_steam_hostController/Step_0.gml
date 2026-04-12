@@ -56,7 +56,7 @@ var _packet_type = buffer_read(_buff, buffer_u8);
 					phy_position_y = pY;
 					speed_hor = pSh;
 					speed_ver = pSv;
-					phy_rotation = pR;
+					rotation_target = pR;
 					image_xscale = pXs;
 					moving = pMoving;
 					running = pRunning;
@@ -64,6 +64,7 @@ var _packet_type = buffer_read(_buff, buffer_u8);
 					pushing = pPushing;
 					
 					phy_speed_x = 0;
+					phy_speed_y = 0;
 				}
 			}
 		break;

@@ -36,6 +36,7 @@ run_speed = 2;
 current_max_speed = walk_speed;
 jump_force = -130;
 
+lerpSpeed = 0.5;
 posX = x;
 posY = y;
 posX_prev = x;

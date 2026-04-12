@@ -1,5 +1,5 @@
-posX = lerp(posX, x, 0.5);
-posY = lerp(posY, y, 0.5);
+posX = lerp(posX, x, lerpSpeed);
+posY = lerp(posY, y, lerpSpeed);
 if bodySpring > 0 then bodySpring -= 0.5;
 bodySpring_draw = lerp(bodySpring_draw, bodySpring, 0.2);
 
