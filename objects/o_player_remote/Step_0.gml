@@ -1,9 +1,3 @@
-if point_distance(x, 0, posX_prev, 0) > 2{
-	if x > posX_prev then image_xscale = 1 else image_xscale = -1;
-	posX_prev = x;
-	posY_prev = y;
-}
-
 if !moving{
 	armAngle = lerp(armAngle, 20*image_xscale, 0.2);
 	legAngle = lerp(legAngle, 0, 0.2);
