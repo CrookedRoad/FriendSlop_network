@@ -14,7 +14,7 @@ showHitbox = false;
 globalvar skipIntro;
 skipIntro = true;
 globalvar test_mode;
-test_mode = true;
+test_mode = false;
 global.testRoom = lobby_rm;
 
 globalvar version;
