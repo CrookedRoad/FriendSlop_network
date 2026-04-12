@@ -32,26 +32,36 @@ var _packet_type = buffer_read(_buff, buffer_u8);
 					buffer_write(other.steam_sendBuffer, buffer_u64, ownerSteam_id);
 					buffer_write(other.steam_sendBuffer, buffer_s16, x);
 					buffer_write(other.steam_sendBuffer, buffer_s16, y);
+					buffer_write(other.steam_sendBuffer, buffer_s8, image_xscale);
 				}
 			}
 			steam_net_packet_send(int64(sender_id), steam_sendBuffer, buffer_tell(steam_sendBuffer), steam_net_packet_type_reliable);
 		break;
 		case packetType_host.playerSync: //Синхронизация персонажей
-		var pX = buffer_read(_buff, buffer_s16);
-		var pY = buffer_read(_buff, buffer_s16);
+		var pX, pY, pSh, pSv, pR, pMoving, pRunning, pClimbing, pPushing;
+			pX = buffer_read(_buff, buffer_s16);
+			pY = buffer_read(_buff, buffer_s16);
+			pSh = buffer_read(_buff, buffer_s16);
+			pSv = buffer_read(_buff, buffer_s16);
+			pR = buffer_read(_buff, buffer_s16);
+		var flags = buffer_read(_buff, buffer_u8);
+			pMoving   = (flags & FLAG_MOVING) != 0;
+			pRunning  = (flags & FLAG_RUNNING) != 0;
+			pClimbing = (flags & FLAG_CLIMBING) != 0;
+			pPushing  = (flags & FLAG_PUSHING) != 0;
 			with(o_player_remote){
 				if ownerSteam_id == sender_id{
 					phy_position_x = pX;
 					phy_position_y = pY;
-					phy_speed_x = 0;
-					phy_speed_y = 0;
+					speed_hor = pSh;
+					speed_ver = pSv;
+					phy_rotation = pR;
+					moving = pMoving;
+					running = pRunning;
+					climbing = pClimbing;
+					pushing = pPushing;
 				}
 			}
-		break;
-		case 10:
-		var pX = buffer_read(_buff, buffer_s16);
-		var pY = buffer_read(_buff, buffer_s16);
-			instance_create_depth(pX, pY, o_player_remote);
 		break;
 	}
 	

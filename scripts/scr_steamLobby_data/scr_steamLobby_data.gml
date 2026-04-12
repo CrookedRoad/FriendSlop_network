@@ -2,20 +2,7 @@
 function scr_steamLobby_data(argument0){
 switch(argument0)
 {
-	case "init":
-	enum packetType_host {
-		ping,
-		pong,
-		getPlayers,
-		playerSync
-	}
-	enum packetType_client {
-		ping,
-		pong,
-		playerInit,
-		playerSync
-	}
-	
+	case "init":	
 	global.mp_lobby_playersList = ds_list_create();
 	global.mp_lobby_list = ds_list_create();
 	global.mp_steam_netBuffer = buffer_create(1024, buffer_grow, 1);
