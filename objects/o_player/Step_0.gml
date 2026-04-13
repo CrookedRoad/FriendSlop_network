@@ -12,7 +12,7 @@ var _move_dir  = _key_right - _key_left;
 
 var _move_force = move_force;
 var _target_move_speed = walk_speed;
-var _on_ground = place_meeting(x, y+20, o_wall) || place_meeting(x, y+20, o_physics_parent);
+var _on_ground = place_meeting(x, y+20, o_wall) || place_meeting(x, y+20, o_physics_parent) || place_meeting(x, y+20, o_player);
 	if (_move_dir != 0){
 		if moveLock <= 0{
 		if (_key_run && _on_ground){
@@ -31,6 +31,7 @@ var _on_ground = place_meeting(x, y+20, o_wall) || place_meeting(x, y+20, o_phys
 				}
 			}
 		} else{
+			if phy_speed_y < 3{
 			if place_meeting(x+(10*image_xscale), y+15, o_wall){
 				climbing = true;
 				if (_key_jump){
@@ -38,6 +39,7 @@ var _on_ground = place_meeting(x, y+20, o_wall) || place_meeting(x, y+20, o_phys
 					physics_apply_impulse(x, y, walljump_force*image_xscale, 0);
 					moveLock = 30;
 				}
+			}
 			}
 		}
 		}
@@ -76,7 +78,7 @@ if (pushing){
 }
 
 if phy_speed_y > 3{
-	bodySpring = 10;
+	bodySpring = 10; 
 	armAngle = lerp(armAngle, 90*image_xscale, 0.4);
 } else{
 	phy_rotation += sin(degtorad(0 - phy_rotation))*20;

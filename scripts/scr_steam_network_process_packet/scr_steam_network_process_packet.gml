@@ -92,6 +92,59 @@ var _packet_type = buffer_read(_buff, buffer_u8);
 				}
 			}
 		break;
+		case packetType.playerSeparateHead_request: //Запрос хосту на потерю головы (host only)
+		var user_id = sender_id;
+			buffer_seek(steam_sendBuffer, buffer_seek_start, 0);
+			buffer_write(steam_sendBuffer, buffer_u8, packetType.playerSeparateHead);
+			buffer_write(steam_sendBuffer, buffer_u64, user_id);
+			buffer_write(steam_sendBuffer, buffer_u16, global.net_id_counter);
+			scr_packet_send_all(steam_sendBuffer, steam_net_packet_type_reliable, false);
+		break;
+		case packetType.playerSeparateHead: //Потеря головы персонажа
+		var user_id, newEntity;
+			user_id = buffer_read(_buff, buffer_u64);
+			newEntity = buffer_read(_buff, buffer_u16);
+			with(o_player){
+				if ownerSteam_id == user_id{
+				var sepHead = scr_char_separate_head();
+					scr_newEntity_add(sepHead);
+				}
+			}
+		break;
+		case packetType.playerAttachHead_request: //Запрос на прикрепление головы персонажа (host only)
+		var user_id = sender_id;
+		var obj_id = buffer_read(_buff, buffer_u16);
+			buffer_seek(steam_sendBuffer, buffer_seek_start, 0);
+			buffer_write(steam_sendBuffer, buffer_u8, packetType.playerAttachHead);
+			buffer_write(steam_sendBuffer, buffer_u64, user_id);
+			buffer_write(steam_sendBuffer, buffer_u16, obj_id);
+			scr_packet_send_all(steam_sendBuffer, steam_net_packet_type_reliable, false);
+		break;
+		case packetType.playerAttachHead: //Прикрепление головы персонажа
+		var user_id = buffer_read(_buff, buffer_u64);
+		var obj_id = buffer_read(_buff, buffer_u16);
+			if ds_exists(global.net_entities, ds_type_map){
+			var obj = global.net_entities[? obj_id];
+				with(o_player){
+					if ownerSteam_id == user_id{
+						headSprite = obj.sprite_index;
+						bodySpring = 4;
+						bodySpring_draw = bodySpring;
+						if object_index == o_player_local{
+							scr_viewFollowTarg_set_perm(id);
+							if instance_exists(o_playerHead){
+								with(o_playerHead){
+									if bodyID == other.id then bodyID = 0;
+								}
+							}
+						}
+					}
+				}
+				with(obj){
+					instance_destroy();
+				}
+			}
+		break;
 	}
 	
 buffer_delete(_buff);

@@ -1,5 +1,5 @@
-///@function scr_steam_hostRequest(userID, requestName)
-function scr_steam_hostRequest(argument0, argument1){
+///@function scr_steam_request(userID, requestName)
+function scr_steam_request(argument0, argument1){
 var _user_id = argument0;
 var _request = argument1;
 if _user_id != 0{

@@ -16,7 +16,10 @@
     "name":"Multiplayer",
     "path":"folders/SYSTEMS/STEAMWORKS/Multiplayer.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"o_steam_networkController",
+    "path":"objects/o_steam_networkController/o_steam_networkController.yy",
+  },
   "persistent":true,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

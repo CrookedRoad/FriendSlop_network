@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_packet_send",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_packet_send",
+  "parent":{
+    "name":"МУСОРКА",
+    "path":"folders/МУСОРКА.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

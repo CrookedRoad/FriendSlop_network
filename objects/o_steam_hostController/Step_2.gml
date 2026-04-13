@@ -41,7 +41,7 @@ var pX, pY, pSh, pSv, pR, pXs, pMoving, pRunning, pClimbing, pPushing;
 		}
 	}
 }
-	
+
 	
 }
 }

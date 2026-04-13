@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_steam_request",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_steam_request",
+  "parent":{
+    "name":"Packet",
+    "path":"folders/SYSTEMS/STEAMWORKS/Multiplayer/Scripts/Packet.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

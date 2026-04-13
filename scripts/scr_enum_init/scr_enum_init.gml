@@ -6,7 +6,11 @@ enum packetType {
 	getPlayers,
 	playersInit,
 	playerSync,
-	playerDeath
+	playerDeath,
+	playerSeparateHead_request,
+	playerSeparateHead,
+	playerAttachHead_request,
+	playerAttachHead
 }
 
 #macro FLAG_MOVING   1 //(1 << 0)

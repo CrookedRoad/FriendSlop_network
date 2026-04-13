@@ -6,8 +6,8 @@
   "name":"o_players_spawnPoint",
   "overriddenProperties":[],
   "parent":{
-    "name":"Multiplayer",
-    "path":"folders/SYSTEMS/STEAMWORKS/Multiplayer.yy",
+    "name":"Objects",
+    "path":"folders/Physics/Objects.yy",
   },
   "parentObjectId":null,
   "persistent":false,

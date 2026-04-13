@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scr_steam_request_all",
   "parent":{
-    "name":"Scripts",
-    "path":"folders/SYSTEMS/STEAMWORKS/Multiplayer/Scripts.yy",
+    "name":"Packet",
+    "path":"folders/SYSTEMS/STEAMWORKS/Multiplayer/Scripts/Packet.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

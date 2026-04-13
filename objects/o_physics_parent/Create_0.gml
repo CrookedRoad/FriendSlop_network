@@ -1,3 +1,5 @@
+network_id = -1;
+
 canGrab = true;
 grab = false;
 lerpSpeed = 0.25;

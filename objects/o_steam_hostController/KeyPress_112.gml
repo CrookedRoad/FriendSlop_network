@@ -6,7 +6,7 @@ var playerListSize = ds_list_size(global.mp_lobby_playersList);
 		{
 		var user_id = global.mp_lobby_playersList[| i];
 			if user_id != global.steamID{
-				scr_steam_hostRequest(user_id, packetType.ping);
+				scr_steam_request(user_id, packetType.ping);
 			}
 		}
 	}

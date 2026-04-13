@@ -10,6 +10,9 @@ switch(showGameInfo)
 		} else{
 			TEXT += "cursor_on_object:   noone\n";
 		}
+		if instance_exists(o_player_local){
+			TEXT += "player speedY:   "+string(o_player_local.phy_speed_y)+"\n";
+		}
 		
 		TEXT += "NetworkConnection: "+string(global.networkConnection)+"\n";
 		TEXT += "appID: "+string(global.appID)+" ("+string(global.buildType)+")\n";

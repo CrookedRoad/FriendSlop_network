@@ -14,7 +14,7 @@ showHitbox = false;
 globalvar skipIntro;
 skipIntro = true;
 globalvar test_mode;
-test_mode = true;
+test_mode = false;
 global.testRoom = test_rm;
 
 globalvar version;

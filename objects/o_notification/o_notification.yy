@@ -6,8 +6,8 @@
   "name":"o_notification",
   "overriddenProperties":[],
   "parent":{
-    "name":"MAIN",
-    "path":"folders/MAIN.yy",
+    "name":"Interface",
+    "path":"folders/MAIN/Interface.yy",
   },
   "parentObjectId":null,
   "persistent":false,

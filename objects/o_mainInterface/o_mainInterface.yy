@@ -1,15 +1,16 @@
 {
   "$GMObject":"",
-  "%Name":"o_globalPhysicController",
+  "%Name":"o_mainInterface",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":64,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"o_globalPhysicController",
+  "name":"o_mainInterface",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Physics/Objects.yy",
+    "name":"Interface",
+    "path":"folders/MAIN/Interface.yy",
   },
   "parentObjectId":null,
   "persistent":false,
