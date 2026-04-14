@@ -2,9 +2,7 @@ var networkEnabled = instance_exists(o_steam_networkController);
 if (physics_init){
 if (networkEnabled){
 var isLocalOwner = (ownerSteam_id == global.steamID);
-	if (isLocalOwner){
-		if !phy_active then phy_active = true;
-	} else{
+	if !isLocalOwner{
 		phy_position_x = lerp(phy_position_x, posX_target, lerpSpeed);
 		phy_position_y = lerp(phy_position_y, posY_target, lerpSpeed);
 		phy_rotation = lerp(phy_rotation, rotation_target, lerpSpeed);
