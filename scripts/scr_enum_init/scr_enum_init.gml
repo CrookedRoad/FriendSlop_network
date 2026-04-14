@@ -10,7 +10,10 @@ enum packetType {
 	playerSeparateHead_request,
 	playerSeparateHead,
 	playerAttachHead_request,
-	playerAttachHead
+	playerAttachHead,
+	entitySync,
+	requestOwnership,
+	informOwnership
 }
 
 #macro FLAG_MOVING   1 //(1 << 0)

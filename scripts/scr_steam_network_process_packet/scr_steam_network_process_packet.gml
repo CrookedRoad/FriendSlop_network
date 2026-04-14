@@ -123,8 +123,8 @@ var _packet_type = buffer_read(_buff, buffer_u8);
 		case packetType.playerAttachHead: //Прикрепление головы персонажа
 		var user_id = buffer_read(_buff, buffer_u64);
 		var obj_id = buffer_read(_buff, buffer_u16);
-			if ds_exists(global.net_entities, ds_type_map){
-			var obj = global.net_entities[? obj_id];
+		var obj = global.net_entities[? obj_id];
+			if instance_exists(obj){
 				with(o_player){
 					if ownerSteam_id == user_id{
 						headSprite = obj.sprite_index;
@@ -143,6 +143,50 @@ var _packet_type = buffer_read(_buff, buffer_u8);
 				with(obj){
 					instance_destroy();
 				}
+			}
+		break;
+		case packetType.entitySync: //Синхронизация объектов
+		var mySteamID = global.steamID;
+		var count = buffer_read(_buff, buffer_u16);
+			repeat(count)
+			{
+			var oID, oX, oY, oR;
+				oID = buffer_read(_buff, buffer_u16);
+				oX = buffer_read(_buff, buffer_s16);
+				oY = buffer_read(_buff, buffer_s16);
+				oR = buffer_read(_buff, buffer_s16);
+			
+			var obj = global.net_entities[? obj_id];
+				if instance_exists(obj){
+					if obj.ownerSteam_id != mySteamID{
+						obj.phy_position_x = oX;
+						obj.phy_position_y = oY;
+						obj.phy_rotation = oR;
+						obj.phy_active = true;
+					}
+				}
+			}
+		break;
+		case packetType.requestOwnership: //Запрос от клиента на владение объектом (host only)
+		var user_id = sender_id;
+		var obj_id = buffer_read(_buff, buffer_u16);
+		var obj = global.net_entities[? obj_id];
+			if instance_exists(obj){
+				obj.ownerSteam_id = user_id;
+				
+				buffer_seek(steam_sendBuffer, buffer_seek_start, 0);
+				buffer_write(steam_sendBuffer, buffer_u8, packetType.informOwnership);
+				buffer_write(steam_sendBuffer, buffer_u64, user_id);
+				buffer_write(steam_sendBuffer, buffer_u16, obj_id);
+				scr_packet_send_all(steam_sendBuffer, steam_net_packet_type_reliable, true);
+			}
+		break;
+		case packetType.informOwnership: //Обновление прав владения объектом (client only)
+		var user_id = sender_id;
+		var obj_id = buffer_read(_buff, buffer_u16);
+		var obj = global.net_entities[? obj_id];
+			if instance_exists(obj){
+				obj.ownerSteam_id = user_id;
 			}
 		break;
 	}

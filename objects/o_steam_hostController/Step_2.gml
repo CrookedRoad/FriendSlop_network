@@ -32,17 +32,33 @@ var pX, pY, pSh, pSv, pR, pXs, pMoving, pRunning, pClimbing, pPushing;
 		if (pClimbing) flags |= FLAG_CLIMBING;
 		if (pPushing)  flags |= FLAG_PUSHING;
 	buffer_write(steam_sendBuffer, buffer_u8, flags);
-	var packetSize = buffer_tell(steam_sendBuffer);
-	for(var i=0; i<playerListSize; i++)
-	{
-	var user_id = global.mp_lobby_playersList[| i];
-		if user_id != global.steamID{
-			steam_net_packet_send(int64(user_id), steam_sendBuffer, packetSize, steam_net_packet_type_unreliable);
+	scr_packet_send_all(steam_sendBuffer, steam_net_packet_type_unreliable, true);
+}
+if instance_exists(o_physics_parent){ //Отправка данных физических объектов
+buffer_seek(steam_sendBuffer, buffer_seek_start, 0);
+buffer_write(steam_sendBuffer, buffer_u8, packetType.entitySync);
+var mySteamID = global.steamID;
+var count = 0;
+	with(o_physics_parent){
+	var _is_moving = (abs(phy_speed_x) > 0.1 || abs(phy_speed_y) > 0.1);
+		if (_is_moving) && (ownerSteam_id == mySteamID) then count++;
+	}
+	buffer_write(steam_sendBuffer, buffer_u16, count);
+	with(o_physics_parent){
+	var _is_moving = (abs(phy_speed_x) > 0.1 || abs(phy_speed_y) > 0.1);
+		if (_is_moving) && (ownerSteam_id == mySteamID){
+			buffer_write(steam_sendBuffer, buffer_u16, network_id);
+			buffer_write(steam_sendBuffer, buffer_s16, phy_position_x);
+			buffer_write(steam_sendBuffer, buffer_s16, phy_position_y);
+			buffer_write(steam_sendBuffer, buffer_s16, phy_rotation);
 		}
+	}
+	if count > 0{
+		scr_packet_send_all(steam_sendBuffer, steam_net_packet_type_unreliable, true);
 	}
 }
 
-	
+
 }
 }
 sendData_timer = tickrate;
