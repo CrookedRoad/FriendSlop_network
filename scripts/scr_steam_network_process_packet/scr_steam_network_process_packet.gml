@@ -156,7 +156,7 @@ var _packet_type = buffer_read(_buff, buffer_u8);
 				oY = buffer_read(_buff, buffer_s16);
 				oR = buffer_read(_buff, buffer_s16);
 			
-			var obj = global.net_entities[? obj_id];
+			var obj = global.net_entities[? oID];
 				if instance_exists(obj){
 					if obj.ownerSteam_id != mySteamID{
 						obj.posX_target = oX;
