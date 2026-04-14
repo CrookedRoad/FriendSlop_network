@@ -53,6 +53,43 @@ var _packet_type = buffer_read(_buff, buffer_u8);
 				}
 			}
 		break;
+		case packetType.getEntities: //Отправка данных о всех объектах (host only)
+			buffer_seek(steam_sendBuffer, buffer_seek_start, 0);
+			buffer_write(steam_sendBuffer, buffer_u8, packetType.entitiesInit);
+			var count = 0;
+				with(o_physics_parent){
+					if network_id != -1 then count++;
+				}
+				buffer_write(steam_sendBuffer, buffer_u16, count);
+				with(o_physics_parent){
+					if network_id != -1{
+						buffer_write(other.steam_sendBuffer, buffer_u16, network_id);
+						buffer_write(other.steam_sendBuffer, buffer_s16, phy_position_x);
+						buffer_write(other.steam_sendBuffer, buffer_s16, phy_position_y);
+						buffer_write(other.steam_sendBuffer, buffer_s16, phy_rotation);
+					}
+				}
+			if count > 0 then steam_net_packet_send(int64(sender_id), steam_sendBuffer, buffer_tell(steam_sendBuffer), steam_net_packet_type_reliable);
+		break;
+		case packetType.entitiesInit: //Инициализация всех объектов (client only)
+		var count = buffer_read(_buff, buffer_u16);
+			repeat(count)
+			{
+			var oID, oX, oY, oR;
+				oID = buffer_read(_buff, buffer_u16);
+				oX = buffer_read(_buff, buffer_s16);
+				oY = buffer_read(_buff, buffer_s16);
+				oR = buffer_read(_buff, buffer_s16);
+			
+			var obj = global.net_entities[? oID];
+				if instance_exists(obj){
+					obj.posX_target = oX;
+					obj.posY_target = oY;
+					obj.rotation_target = oR;
+				}
+			}
+		break;
+		
 		case packetType.playerSync: //Синхронизация персонажей
 		var pX, pY, pSh, pSv, pR, pXs, pMoving, pRunning, pClimbing, pPushing;
 			pX = buffer_read(_buff, buffer_s16);
@@ -150,12 +187,11 @@ var _packet_type = buffer_read(_buff, buffer_u8);
 		var count = buffer_read(_buff, buffer_u16);
 			repeat(count)
 			{
-			var oID, oX, oY, oR, oGrab;
+			var oID, oX, oY, oR;
 				oID = buffer_read(_buff, buffer_u16);
 				oX = buffer_read(_buff, buffer_s16);
 				oY = buffer_read(_buff, buffer_s16);
 				oR = buffer_read(_buff, buffer_s16);
-				oGrab = buffer_read(_buff, buffer_u8);
 			
 			var obj = global.net_entities[? oID];
 				if instance_exists(obj){
@@ -163,7 +199,6 @@ var _packet_type = buffer_read(_buff, buffer_u8);
 						obj.posX_target = oX;
 						obj.posY_target = oY;
 						obj.rotation_target = oR;
-						obj.grab = oGrab;
 						
 						obj.phy_speed_x = 0;
 						obj.phy_speed_y = 0;
@@ -185,7 +220,7 @@ var _packet_type = buffer_read(_buff, buffer_u8);
 				scr_packet_send_all(steam_sendBuffer, steam_net_packet_type_reliable, true);
 			}
 		break;
-		case packetType.informOwnership: //Обновление прав владения объектом (client only)
+		case packetType.informOwnership: //Обновление прав владения объектом
 		var user_id = sender_id;
 		var obj_id = buffer_read(_buff, buffer_u16);
 		var obj = global.net_entities[? obj_id];
@@ -193,7 +228,7 @@ var _packet_type = buffer_read(_buff, buffer_u8);
 				obj.ownerSteam_id = user_id;
 			}
 		break;
-		case packetType.returnOwnershipToHost: //Возвращение прав владения объектом хосту
+		case packetType.returnOwnershipToHost: //Возвращение прав владения объектом хосту (host only)
 		var user_id = global.mp_lobby_host_id;
 		var obj_id = buffer_read(_buff, buffer_u16);
 		var obj = global.net_entities[? obj_id];

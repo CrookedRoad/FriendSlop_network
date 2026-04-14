@@ -1,6 +1,6 @@
 var networkEnabled = instance_exists(o_steam_networkController);
-if (physics_init){
 if (networkEnabled){
+if (physics_init) && network_id != -1{
 var isLocalOwner = (ownerSteam_id == global.steamID);
 	if !isLocalOwner{
 		phy_position_x = lerp(phy_position_x, posX_target, lerpSpeed);

@@ -5,6 +5,8 @@ enum packetType {
 	pong,
 	getPlayers,
 	playersInit,
+	getEntities,
+	entitiesInit,
 	playerSync,
 	playerDeath,
 	playerSeparateHead_request,

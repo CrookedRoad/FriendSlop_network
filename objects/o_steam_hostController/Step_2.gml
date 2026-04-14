@@ -41,17 +41,16 @@ var mySteamID = global.steamID;
 var count = 0;
 	with(o_physics_parent){
 	var _is_moving = (abs(phy_speed_x) > 0.1 || abs(phy_speed_y) > 0.1);
-		if (_is_moving) && (ownerSteam_id == mySteamID) then count++;
+		if (_is_moving) && network_id != -1 && (ownerSteam_id == mySteamID) then count++;
 	}
 	buffer_write(steam_sendBuffer, buffer_u16, count);
 	with(o_physics_parent){
 	var _is_moving = (abs(phy_speed_x) > 0.1 || abs(phy_speed_y) > 0.1);
-		if (_is_moving) && (ownerSteam_id == mySteamID){
+		if (_is_moving) && network_id != -1 && (ownerSteam_id == mySteamID){
 			buffer_write(other.steam_sendBuffer, buffer_u16, network_id);
 			buffer_write(other.steam_sendBuffer, buffer_s16, phy_position_x);
 			buffer_write(other.steam_sendBuffer, buffer_s16, phy_position_y);
 			buffer_write(other.steam_sendBuffer, buffer_s16, phy_rotation);
-			buffer_write(other.steam_sendBuffer, buffer_u8, grab);
 		}
 	}
 	if count > 0{
