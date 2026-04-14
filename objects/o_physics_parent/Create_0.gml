@@ -6,5 +6,11 @@ if instance_exists(o_steam_networkController){
 
 canGrab = true;
 grab = false;
-lerpSpeed = 0.25;
+grabbingLerpSpeed = 0.25;
 densityDefault = 0;
+physics_init = true;
+
+posX_target = x;
+posY_target = y;
+rotation_target = 0;
+lerpSpeed = 0.5;

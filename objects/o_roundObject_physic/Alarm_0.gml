@@ -13,3 +13,4 @@ densityDefault = physics_get_density(fixture);
 
 physics_fixture_delete(fix);
 phy_fixed_rotation = false;
+physics_init = true;

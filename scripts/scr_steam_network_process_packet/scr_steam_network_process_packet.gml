@@ -159,10 +159,13 @@ var _packet_type = buffer_read(_buff, buffer_u8);
 			var obj = global.net_entities[? obj_id];
 				if instance_exists(obj){
 					if obj.ownerSteam_id != mySteamID{
-						obj.phy_position_x = oX;
-						obj.phy_position_y = oY;
-						obj.phy_rotation = oR;
-						obj.phy_active = true;
+						obj.posX_target = oX;
+						obj.posY_target = oY;
+						obj.rotation_target = oR;
+						
+						obj.phy_active = false;
+						obj.phy_speed_x = 0;
+						obj.phy_speed_y = 0;
 					}
 				}
 			}
@@ -187,6 +190,20 @@ var _packet_type = buffer_read(_buff, buffer_u8);
 		var obj = global.net_entities[? obj_id];
 			if instance_exists(obj){
 				obj.ownerSteam_id = user_id;
+			}
+		break;
+		case packetType.returnOwnershipToHost: //Возвращение прав владения объектом хосту
+		var user_id = global.mp_lobby_host_id;
+		var obj_id = buffer_read(_buff, buffer_u16);
+		var obj = global.net_entities[? obj_id];
+			if instance_exists(obj){
+				obj.ownerSteam_id = user_id;
+				
+				buffer_seek(steam_sendBuffer, buffer_seek_start, 0);
+				buffer_write(steam_sendBuffer, buffer_u8, packetType.informOwnership);
+				buffer_write(steam_sendBuffer, buffer_u64, user_id);
+				buffer_write(steam_sendBuffer, buffer_u16, obj_id);
+				scr_packet_send_all(steam_sendBuffer, steam_net_packet_type_reliable, true);
 			}
 		break;
 	}

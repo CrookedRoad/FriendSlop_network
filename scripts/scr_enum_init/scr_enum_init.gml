@@ -13,7 +13,8 @@ enum packetType {
 	playerAttachHead,
 	entitySync,
 	requestOwnership,
-	informOwnership
+	informOwnership,
+	returnOwnershipToHost
 }
 
 #macro FLAG_MOVING   1 //(1 << 0)

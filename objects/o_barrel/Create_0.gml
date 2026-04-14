@@ -1,2 +1,2 @@
 event_inherited();
-lerpSpeed = 0.025;
+grabbingLerpSpeed = 0.025;
