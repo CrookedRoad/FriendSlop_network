@@ -1,6 +1,8 @@
 event_inherited();
-if instance_exists(o_player){
-with(o_player){
+var player = o_player;
+if instance_exists(o_steam_networkController) then player = o_player_local;
+if instance_exists(player){
+with(player){
 var collisionX, collisionY;
 	collisionX = phy_position_x+lengthdir_x(18, 90+image_alpha);
 	collisionY = phy_position_y+lengthdir_y(18, 90+image_alpha);

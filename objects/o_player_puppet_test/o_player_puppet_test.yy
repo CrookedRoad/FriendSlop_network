@@ -12,10 +12,7 @@
     "name":"МУСОРКА",
     "path":"folders/МУСОРКА.yy",
   },
-  "parentObjectId":{
-    "name":"o_player",
-    "path":"objects/o_player/o_player.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

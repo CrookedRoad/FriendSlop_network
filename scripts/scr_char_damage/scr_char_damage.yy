@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_packet_send",
+  "%Name":"scr_char_damage",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_packet_send",
+  "name":"scr_char_damage",
   "parent":{
-    "name":"МУСОРКА",
-    "path":"folders/МУСОРКА.yy",
+    "name":"Scripts",
+    "path":"folders/Physics/Scripts.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

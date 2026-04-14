@@ -51,6 +51,7 @@ var count = 0;
 			buffer_write(other.steam_sendBuffer, buffer_s16, phy_position_x);
 			buffer_write(other.steam_sendBuffer, buffer_s16, phy_position_y);
 			buffer_write(other.steam_sendBuffer, buffer_s16, phy_rotation);
+			buffer_write(other.steam_sendBuffer, buffer_u8, clamp(image_alpha * 255, 0, 255));
 		}
 	}
 	if count > 0{

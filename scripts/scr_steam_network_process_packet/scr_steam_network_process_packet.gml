@@ -187,11 +187,12 @@ var _packet_type = buffer_read(_buff, buffer_u8);
 		var count = buffer_read(_buff, buffer_u16);
 			repeat(count)
 			{
-			var oID, oX, oY, oR;
+			var oID, oX, oY, oR, oAl;
 				oID = buffer_read(_buff, buffer_u16);
 				oX = buffer_read(_buff, buffer_s16);
 				oY = buffer_read(_buff, buffer_s16);
 				oR = buffer_read(_buff, buffer_s16);
+				oAl = buffer_read(_buff, buffer_u8)/255;
 			
 			var obj = global.net_entities[? oID];
 				if instance_exists(obj){
@@ -199,6 +200,7 @@ var _packet_type = buffer_read(_buff, buffer_u8);
 						obj.posX_target = oX;
 						obj.posY_target = oY;
 						obj.rotation_target = oR;
+						obj.image_alpha = oAl;
 						
 						obj.phy_speed_x = 0;
 						obj.phy_speed_y = 0;
@@ -221,25 +223,34 @@ var _packet_type = buffer_read(_buff, buffer_u8);
 			}
 		break;
 		case packetType.informOwnership: //Обновление прав владения объектом
-		var user_id = sender_id;
+		var user_id = buffer_read(_buff, buffer_u64);
 		var obj_id = buffer_read(_buff, buffer_u16);
 		var obj = global.net_entities[? obj_id];
 			if instance_exists(obj){
 				obj.ownerSteam_id = user_id;
 			}
 		break;
-		case packetType.returnOwnershipToHost: //Возвращение прав владения объектом хосту (host only)
-		var user_id = global.mp_lobby_host_id;
+		case packetType.entityDestroy_request: //Запрос от клиента на удаление объекта (host only)
 		var obj_id = buffer_read(_buff, buffer_u16);
 		var obj = global.net_entities[? obj_id];
 			if instance_exists(obj){
-				obj.ownerSteam_id = user_id;
+				with(obj){
+					instance_destroy();
+				}
 				
 				buffer_seek(steam_sendBuffer, buffer_seek_start, 0);
-				buffer_write(steam_sendBuffer, buffer_u8, packetType.informOwnership);
-				buffer_write(steam_sendBuffer, buffer_u64, user_id);
+				buffer_write(steam_sendBuffer, buffer_u8, packetType.entityDestroy);
 				buffer_write(steam_sendBuffer, buffer_u16, obj_id);
 				scr_packet_send_all(steam_sendBuffer, steam_net_packet_type_reliable, true);
+			}
+		break;
+		case packetType.entityDestroy: //Удаление объекта
+		var obj_id = buffer_read(_buff, buffer_u16);
+		var obj = global.net_entities[? obj_id];
+			if instance_exists(obj){
+				with(obj){
+					instance_destroy();
+				}
 			}
 		break;
 	}

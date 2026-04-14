@@ -16,7 +16,8 @@ enum packetType {
 	entitySync,
 	requestOwnership,
 	informOwnership,
-	returnOwnershipToHost
+	entityDestroy_request,
+	entityDestroy
 }
 
 #macro FLAG_MOVING   1 //(1 << 0)
