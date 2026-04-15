@@ -187,12 +187,13 @@ var _packet_type = buffer_read(_buff, buffer_u8);
 		var count = buffer_read(_buff, buffer_u16);
 			repeat(count)
 			{
-			var oID, oX, oY, oR, oAl;
+			var oID, oX, oY, oR, oAl, oGrabbing;
 				oID = buffer_read(_buff, buffer_u16);
 				oX = buffer_read(_buff, buffer_s16);
 				oY = buffer_read(_buff, buffer_s16);
 				oR = buffer_read(_buff, buffer_s16);
 				oAl = buffer_read(_buff, buffer_u8)/255;
+				oGrabbing = buffer_read(_buff, buffer_u8);
 			
 			var obj = global.net_entities[? oID];
 				if instance_exists(obj){
@@ -201,7 +202,9 @@ var _packet_type = buffer_read(_buff, buffer_u8);
 						obj.posY_target = oY;
 						obj.rotation_target = oR;
 						obj.image_alpha = oAl;
+						obj.grabbing = oGrabbing;
 						
+						obj.phy_active = true;
 						obj.phy_speed_x = 0;
 						obj.phy_speed_y = 0;
 					}

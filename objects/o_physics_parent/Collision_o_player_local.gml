@@ -1,5 +1,5 @@
 if instance_exists(o_steam_networkController){
-if network_id != -1{
+if network_id != -1 && !grabbing{
 	if ownerSteam_id != global.steamID{
 	var _buff = buffer_create(1, buffer_grow, 1);
 		buffer_write(_buff, buffer_u8, packetType.requestOwnership);

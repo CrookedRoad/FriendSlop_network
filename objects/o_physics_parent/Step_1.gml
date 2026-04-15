@@ -16,27 +16,30 @@ var isLocalOwner = (ownerSteam_id == global.steamID);
 if (canGrab){
 	if !grab{
 		if (global.controlsData[? "mouse_l"].prs){
-		if global.cursor_on_object == id{
-			if instance_exists(o_player_local){
-			var dist = point_distance(x, y, o_player_local.x, o_player_local.y);
-			var collisionLine = collision_line(x, y, o_player_local.x, o_player_local.y, o_wall, false, true) ||
-								collision_line(x, y, o_player_local.x, o_player_local.y, o_physics_parent, false, true);
+		if !grabbing{
+			if global.cursor_on_object == id{
+				if instance_exists(o_player_local){
+				var dist = point_distance(x, y, o_player_local.x, o_player_local.y);
+				var collisionLine = collision_line(x, y, o_player_local.x, o_player_local.y, o_wall, false, true) ||
+									collision_line(x, y, o_player_local.x, o_player_local.y, o_physics_parent, false, true);
 								
-				if !collisionLine && dist < global.grabDistLimit{
-					if (networkEnabled){
-						if ownerSteam_id != global.steamID{
-						var _buff = buffer_create(1, buffer_grow, 1);
-							buffer_write(_buff, buffer_u8, packetType.requestOwnership);
-							buffer_write(_buff, buffer_u16, network_id);
-							steam_net_packet_send(int64(global.mp_lobby_host_id), _buff, buffer_get_size(_buff), steam_net_packet_type_reliable);
-							buffer_delete(_buff);
+					if !collisionLine && dist < global.grabDistLimit{
+						if (networkEnabled){
+							if ownerSteam_id != global.steamID{
+							var _buff = buffer_create(1, buffer_grow, 1);
+								buffer_write(_buff, buffer_u8, packetType.requestOwnership);
+								buffer_write(_buff, buffer_u16, network_id);
+								steam_net_packet_send(int64(global.mp_lobby_host_id), _buff, buffer_get_size(_buff), steam_net_packet_type_reliable);
+								buffer_delete(_buff);
 							
-							ownerSteam_id = global.steamID;
+								ownerSteam_id = global.steamID;
+							}
 						}
-					}
 					
-					grab = true;
-					physics_set_density(fixture, 0.1);
+						grab = true;
+						grabbing = true;
+						physics_set_density(fixture, 0.1);
+					}
 				}
 			}
 		}
@@ -56,6 +59,11 @@ if (canGrab){
 		if (global.controlsData[? "mouse_l"].rls) then drop = true;
 		if instance_exists(o_player_local){
 		var dist = point_distance(x, y, o_player_local.x, o_player_local.y);
+			with(o_player_local){
+				if !moving{
+					if other.x > x then image_xscale = 1 else image_xscale = -1;
+				}
+			}
 			if dist > global.grabDistLimit then drop = true;
 			if (global.controlsData[? "mouse_r"].rls){
 			var dir = point_direction(o_player_local.x, o_player_local.y, x, y);
@@ -71,6 +79,7 @@ if (canGrab){
 				scr_physics_apply_impulse_dir(x, y, dir, deltaDist*0.025);
 			}
 			grab = false;
+			grabbing = false;
 			physics_set_density(fixture, densityDefault);
 		}
 	}

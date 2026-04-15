@@ -38,3 +38,5 @@ bodyAngle = 0;
 bodySpring = 0;
 bodySpring_draw = 0;
 breath = 0;
+
+rope = -1;
